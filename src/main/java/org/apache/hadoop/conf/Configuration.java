@@ -21,4 +21,12 @@ public class Configuration {
     public String get(String x) {
         return null;
     }
+
+    public ClassLoader getClassLoader() {
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        if (classLoader == null) {
+            classLoader = Configuration.class.getClassLoader();
+        }
+        return classLoader;
+    }
 }
